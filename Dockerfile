@@ -4,7 +4,8 @@
 
 FROM nginx:alpine
 
-# Copy documentation to nginx
+# Copy documentation to nginx (index.html so GET / works)
+COPY index.html /usr/share/nginx/html/
 COPY README.md /usr/share/nginx/html/
 COPY *.md /usr/share/nginx/html/
 COPY docs/ /usr/share/nginx/html/docs/

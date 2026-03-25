@@ -21,7 +21,7 @@ Push-Location $repoRoot
 $dirty = git status --porcelain
 Pop-Location
 if ($dirty) {
-  Write-Warning "Hay cambios sin commit: git archive solo empaqueta HEAD. Haz commit antes de desplegar."
+  throw "Hay cambios sin commit: git archive solo empaqueta HEAD. Haz commit (o descarta cambios) antes de desplegar."
 }
 
 Write-Host "Creating archive from git (tracked files only)..." -ForegroundColor Cyan

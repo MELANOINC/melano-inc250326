@@ -4,21 +4,23 @@ Este documento describe nodos y conexiones para replicar el flujo de 12 pasos de
 
 ## Nodos sugeridos (orden lógico)
 
-| # | Nodo | Rol |
-|---|------|-----|
-| 1 | Webhook (POST) | Entrada WhatsApp Cloud API (verify + messages) |
-| 2 | Function / Set | Normalizar payload: `from`, `text`, `message_id`, `timestamp` |
-| 3 | Supabase | `get` o `select` en `alenya_leads` por `wa_id` |
-| 4 | IF | `lead` existe |
-| 5a | Supabase `insert` | Crear lead nuevo + (opcional) HTTP a notificación vendedor |
-| 5b | — | Continuar con lead existente |
-| 6 | Supabase | Últimos N mensajes de `alenya_conversaciones` para `lead_id` |
-| 7 | Function | Armar prompt: system + variables BOT_* + historial |
-| 8 | HTTP Request | Anthropic Messages API (Claude Sonnet) |
-| 9 | Function | Parsear texto + regex/JSON liviano para `intent` |
-| 10 | Switch | Ramas: `info`, `calificar`, `cerrar`, `escalar` |
-| 11 | HTTP Request | WhatsApp Cloud API `messages` (responder) |
-| 12 | Supabase | `insert` mensajes user+assistant; `update` lead `etapa`; si escala → notificación |
+
+| #   | Nodo              | Rol                                                                               |
+| --- | ----------------- | --------------------------------------------------------------------------------- |
+| 1   | Webhook (POST)    | Entrada WhatsApp Cloud API (verify + messages)                                    |
+| 2   | Function / Set    | Normalizar payload: `from`, `text`, `message_id`, `timestamp`                     |
+| 3   | Supabase          | `get` o `select` en `alenya_leads` por `wa_id`                                    |
+| 4   | IF                | `lead` existe                                                                     |
+| 5a  | Supabase `insert` | Crear lead nuevo + (opcional) HTTP a notificación vendedor                        |
+| 5b  | —                 | Continuar con lead existente                                                      |
+| 6   | Supabase          | Últimos N mensajes de `alenya_conversaciones` para `lead_id`                      |
+| 7   | Function          | Armar prompt: system + variables BOT_* + historial                                |
+| 8   | HTTP Request      | Anthropic Messages API (Claude Sonnet)                                            |
+| 9   | Function          | Parsear texto + regex/JSON liviano para `intent`                                  |
+| 10  | Switch            | Ramas: `info`, `calificar`, `cerrar`, `escalar`                                   |
+| 11  | HTTP Request      | WhatsApp Cloud API `messages` (responder)                                         |
+| 12  | Supabase          | `insert` mensajes user+assistant; `update` lead `etapa`; si escala → notificación |
+
 
 ## Variables de entorno n8n (ejemplo)
 

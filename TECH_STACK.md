@@ -45,6 +45,7 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
 ### Landing Page y Marketing Site
 
 #### Framework Principal
+
 - **Next.js 14** (App Router)
   - Server Side Rendering (SSR) para SEO
   - Static Site Generation (SSG) para páginas marketing
@@ -52,18 +53,19 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
   - API Routes para forms y newsletter
 
 #### Lenguaje
+
 - **TypeScript 5.0+**
   - Type safety end-to-end
   - Mejora DX (Developer Experience)
   - Reduce bugs en producción
 
 #### Styling
+
 - **Tailwind CSS 3.4**
   - Utility-first approach
   - Custom design system
   - Dark mode support
   - Responsive por defecto
-
 - **shadcn/ui**
   - Componentes accesibles (a11y)
   - Customizables con Tailwind
@@ -71,6 +73,7 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
   - Radix UI bajo el hood
 
 #### Animaciones
+
 - **Framer Motion**
   - Animaciones smooth 60fps
   - Page transitions
@@ -78,6 +81,7 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
   - Interactive hover effects
 
 #### Icons
+
 - **Lucide React**
   - +1,000 iconos consistentes
   - Tree-shakeable
@@ -86,6 +90,7 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
 ### Dashboard de Usuario
 
 #### Data Fetching
+
 - **TanStack Query (React Query) 5.0**
   - Caching inteligente
   - Optimistic updates
@@ -93,28 +98,31 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
   - Server state management
 
 #### State Management
+
 - **Zustand** para estado global
   - Lightweight (1kb)
   - DevTools integration
   - Middleware support
 
 #### Forms
+
 - **React Hook Form**
   - Performance optimizado
   - Validación con Zod
   - Menor re-renders
 
 #### Charts y Analytics
+
 - **Recharts**
   - Componible y customizable
   - Built on D3.js
   - Responsive charts
-
 - **Tremor**
   - Dashboard components
   - Pre-built analytics widgets
 
 #### Tables
+
 - **TanStack Table**
   - Sorting, filtering, pagination
   - Virtual scrolling
@@ -123,12 +131,14 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
 ### Chat Widget (Embeddable)
 
 #### Tecnología
+
 - **Preact** (para tamaño reducido)
   - 3kb en lugar de 40kb (React)
   - API compatible con React
   - Ideal para widget embeddable
 
 #### Comunicación Real-time
+
 - **WebSockets** (Socket.io)
   - Mensajes instantáneos
   - Typing indicators
@@ -142,23 +152,25 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
 ### API Server
 
 #### Runtime y Framework
+
 - **Node.js 20 LTS**
   - Async/await native
   - Performance mejorado
   - Mejor manejo de memoria
-
 - **Express 4.18**
   - Middleware ecosystem
   - RESTful API
   - Routing flexible
 
 #### Validación
+
 - **Zod**
   - Schema validation
   - Type inference
   - Runtime safety
 
 #### Autenticación
+
 - **Supabase Auth**
   - JWT tokens
   - OAuth providers (Google, GitHub)
@@ -166,6 +178,7 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
   - Row Level Security (RLS)
 
 #### Rate Limiting
+
 - **express-rate-limit**
   - Previene abuse
   - Configurable por endpoint
@@ -174,6 +187,7 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
 ### Queue System
 
 #### Message Queue
+
 - **Bull (Redis-based)**
   - Job processing
   - Scheduled jobs
@@ -181,6 +195,7 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
   - Prioridades
 
 #### Casos de Uso
+
 - Envío de emails masivos
 - Procesamiento de webhooks
 - Training de IA
@@ -193,6 +208,7 @@ Documentación técnica completa de la arquitectura, tecnologías y infraestruct
 ### Primary Database
 
 #### PostgreSQL 15 (via Supabase)
+
 ```sql
 -- Principales tablas
 
@@ -248,6 +264,7 @@ automations
 ```
 
 #### Features Usadas
+
 - **Row Level Security**: Seguridad a nivel de row
 - **Realtime subscriptions**: Push de cambios
 - **Full-text search**: Búsqueda en conversaciones
@@ -256,6 +273,7 @@ automations
 ### Cache Layer
 
 #### Redis 7
+
 ```redis
 # Patrones de uso
 
@@ -283,6 +301,7 @@ TTL: 1 día
 ### Vector Database
 
 #### Pinecone
+
 ```
 Uso: RAG (Retrieval Augmented Generation)
 
@@ -309,6 +328,7 @@ Pipeline:
 ### Modelos de Lenguaje
 
 #### OpenAI GPT-4
+
 ```javascript
 // Configuración
 {
@@ -327,6 +347,7 @@ Pipeline:
 ```
 
 #### Anthropic Claude 3
+
 ```javascript
 // Configuración
 {
@@ -342,6 +363,7 @@ Pipeline:
 ```
 
 #### Embeddings
+
 - **text-embedding-3-small** (OpenAI)
   - 1536 dimensiones
   - Para búsqueda semántica
@@ -350,6 +372,7 @@ Pipeline:
 ### Orchestration
 
 #### LangChain
+
 ```typescript
 // Ejemplo de chain
 
@@ -371,6 +394,7 @@ const conversationalChain = new ConversationalRetrievalQAChain({
 ### Clasificación y Análisis
 
 #### Hugging Face Models
+
 ```python
 # Sentiment Analysis
 model: "cardiffnlp/twitter-xlm-roberta-base-sentiment"
@@ -392,7 +416,9 @@ Extrae: nombres, empresas, productos
 ### Mensajería
 
 #### WhatsApp Business API
+
 **Provider**: Twilio
+
 ```javascript
 // Setup
 const twilio = require('twilio');
@@ -416,11 +442,14 @@ POST /webhooks/whatsapp/incoming
 ```
 
 **Pricing**: 
+
 - $0.005/mensaje (saliente)
 - Gratis (entrante)
 
 #### Email
+
 **Provider**: SendGrid
+
 ```javascript
 // Transactional email
 const sgMail = require('@sendgrid/mail');
@@ -443,11 +472,14 @@ POST /webhooks/sendgrid/inbound
 ```
 
 **Pricing**:
+
 - 100 emails/día gratis
 - $0.00085/email después
 
 #### Instagram/Facebook Messenger
+
 **Provider**: Meta Graph API
+
 ```javascript
 // Setup webhook
 const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN;
@@ -468,6 +500,7 @@ await axios.post(
 ### CRM y E-commerce
 
 #### Shopify
+
 ```javascript
 // Shopify GraphQL API
 const SHOPIFY_ADMIN_API = `https://${shop}.myshopify.com/admin/api/2024-01/graphql.json`;
@@ -497,6 +530,7 @@ mutation {
 ```
 
 #### WooCommerce
+
 ```javascript
 // REST API
 const WooCommerce = require('woocommerce-api');
@@ -517,6 +551,7 @@ await woo.post('orders', orderData);
 ### Automatización
 
 #### Zapier
+
 ```javascript
 // Webhook trigger
 POST /webhooks/zapier/new-contact
@@ -538,6 +573,7 @@ POST /webhooks/zapier/new-contact
 ### Pagos
 
 #### Stripe
+
 ```javascript
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
 
@@ -564,6 +600,7 @@ POST /webhooks/stripe
 ### Hosting
 
 #### Frontend (Vercel)
+
 ```yaml
 # vercel.json
 {
@@ -580,16 +617,19 @@ POST /webhooks/stripe
 ```
 
 **Features**:
+
 - Edge Network global
 - Automatic HTTPS
 - Preview deployments por PR
 - Analytics integrado
 
 **Pricing**: 
+
 - Hobby: Gratis (suficiente para MVP)
 - Pro: $20/mes (para producción)
 
 #### Backend (Railway)
+
 ```yaml
 # railway.toml
 [build]
@@ -608,18 +648,21 @@ cpuLimit = "1vCPU"
 ```
 
 **Features**:
+
 - Deploy desde GitHub
 - Auto-scaling
 - Logs centralizados
 - PostgreSQL managed
 
 **Pricing**:
+
 - $5/mes base
 - Pay-per-use después
 
 ### Database Hosting
 
 #### Supabase (PostgreSQL + Auth + Storage)
+
 ```javascript
 // Configuración
 const supabase = createClient(
@@ -636,10 +679,12 @@ const supabase = createClient(
 ```
 
 **Pricing**:
+
 - Free tier: 500MB DB, 1GB storage
 - Pro: $25/mes (8GB DB, 100GB storage)
 
 #### Redis (Upstash)
+
 ```javascript
 // Serverless Redis
 const redis = new Redis({
@@ -654,12 +699,14 @@ const redis = new Redis({
 ```
 
 **Pricing**:
+
 - Free: 10K requests/day
 - Pay-as-you-go: $0.2 per 100K requests
 
 ### CI/CD
 
 #### GitHub Actions
+
 ```yaml
 # .github/workflows/deploy.yml
 name: Deploy Production
@@ -691,6 +738,7 @@ jobs:
 ### Monitoring
 
 #### Sentry (Error Tracking)
+
 ```javascript
 // Configuración
 Sentry.init({
@@ -707,6 +755,7 @@ Sentry.init({
 **Alerts**: Slack cuando >100 errors/hr
 
 #### Uptime Robot (Monitoring)
+
 ```yaml
 Monitores configurados:
 - https://luxiabot.com (cada 5 min)
@@ -720,6 +769,7 @@ Alerts via:
 ```
 
 #### Logging (Better Stack)
+
 ```javascript
 // Structured logging
 logger.info('Message sent', {
@@ -741,17 +791,20 @@ logger.info('Message sent', {
 ## 🔒 Seguridad
 
 ### Autenticación y Autorización
+
 - JWT tokens con refresh
 - OAuth 2.0 (Google, Microsoft)
 - 2FA opcional (TOTP)
 - API keys para integraciones
 
 ### Encriptación
+
 - TLS 1.3 en tránsito
 - AES-256 para datos sensibles en reposo
 - Secrets en environment variables (no en código)
 
 ### Rate Limiting
+
 ```javascript
 // Por IP
 100 requests/minuto (anónimo)
@@ -763,6 +816,7 @@ logger.info('Message sent', {
 ```
 
 ### Compliance
+
 - **GDPR**: Right to deletion, data export
 - **SOC 2**: En proceso (Q3 2026)
 - **CCPA**: Cumplimiento para usuarios California
@@ -792,6 +846,7 @@ AI Response:
 ```
 
 ### Optimizaciones
+
 - Image optimization (Next.js Image)
 - Code splitting automático
 - Route prefetching
@@ -833,21 +888,22 @@ TOTAL: ~$436/mes (para 100 clientes)
 ## 🚀 Próximas Tecnologías (Roadmap)
 
 ### Q2 2026
-- [ ] **Golang** para microservicios críticos (mejor performance)
-- [ ] **GraphQL** como alternativa a REST
-- [ ] **WebRTC** para llamadas de voz/video
+
+- **Golang** para microservicios críticos (mejor performance)
+- **GraphQL** como alternativa a REST
+- **WebRTC** para llamadas de voz/video
 
 ### Q3 2026
-- [ ] **React Native** para app móvil nativa
-- [ ] **Python** para ML pipelines avanzados
-- [ ] **Kubernetes** para orquestación (si alcanzamos 5K+ clientes)
+
+- **React Native** para app móvil nativa
+- **Python** para ML pipelines avanzados
+- **Kubernetes** para orquestación (si alcanzamos 5K+ clientes)
 
 ---
 
-<div align="center">
+
 
 **[🏠 Volver al README](./README.md)** | **[🗺️ Ver Roadmap](./ROADMAP.md)**
 
 *Actualizado: Enero 2026*
 
-</div>
